@@ -58,24 +58,45 @@ public class RoomRepository {
     }
 
     // เพิ่มห้อง อาจจะต้องมีตัวเช็คว่ามีห้องนั้นยัง ถ้ามีแล้วจะแอดห้องเพิ่มต้องแจ้งเตือน
-    public void addRoom(){
+    public boolean addRoom(int numberRoom, String type, double price,String status){
+        //แก้ไขความไม่หยืดหยุ่นด้วย รับค่าที่โยนมา และ return เป็นค่าจริงเท็จแจ้งผลการทำงาน
         //คิดว่าน่าจะต้องมีอะไรเพิ่มความหยืดหยุ่นเจค แบบให้ไม่ยึดข้อมูลที่คีย์ผ่าน gui เผื่อกรณีต้องการปรับแต่งหน้า gui น่าจะลำบาก้ามามั่วแก้โค้ดในนี้
         //มีการดึงข้อมูลจาก gui มา //รอ gui
         //map.put(numberRoom, new Room(numberRoom, type, price, status))
+        if (!map.containsKey(numberRoom)) {
+            map.put(numberRoom, new Room(numberRoom, type, price, status));
+            return true;
+        }
+        return false;
+
     }
 
-    // ลบห้อง  เราเลือกแก้ไขที่ hash เข้าถึงผ่านคีย์ อาจจะต้องมีตัว gui ให้เข้าถึงได้โดยตรงไม่ต้องใช้งานผ่านตัวแอด
-    public void removeRoom(){
+    // ลบห้อง แต่ต้องมีห้องที่จะลบด้วย ถ้าไม่มีจะ false แล้วให้ gui แจ้งอีกที , เราเลือกแก้ไขที่ hash เข้าถึงผ่านคีย์ อาจจะต้องมีตัว gui ให้เข้าถึงได้โดยตรงไม่ต้องใช้งานผ่านตัวแอด
+    public boolean removeRoom(int numberRoom){
+        //แก้ไขความไม่หยืดหยุ่นด้วย รับค่าที่โยนมา และ return เป็นค่าจริงเท็จแจ้งผลการทำงาน
         //คิดว่าน่าจะต้องมีอะไรเพิ่มความหยืดหยุ่นเจค แบบให้ไม่ยึดข้อมูลที่คีย์ผ่าน gui เผื่อกรณีต้องการปรับแต่งหน้า gui น่าจะลำบาก้ามามั่วแก้โค้ดในนี้
         //มีการดึงข้อมูลจาก gui มา //รอ gui
         //map.remove(numberRoom);
+        if (map.containsKey(numberRoom)) {
+            map.remove(numberRoom);
+            return true;
+        }
+        return false;
     }
 
     // แก้ไขรายละเอียดของห้อง เราเลือกแก้ไขที่ hash เข้าถึงผ่านคีย์ อาจจะต้องมีตัว gui ให้เข้าถึงได้โดยตรงไม่ต้องใช้งานผ่านตัวแอด
-    public void replaceRoom(){
+    public boolean replaceRoom(int numberRoom, String type, double price,String status){
+        //คิดว่าควรสามารถแก้ได้เฉพาะจุดนะ ถ้าคีย์ใหม่หมดทั้ง ๆ ที่แก้้เฉพาะจุดได้ อาจจะแก้ตรงส่วนของ ระบบ gui ให้โยนค่าที่ผู้ใช้ไม่เปลี่ยนมาด้วย
+        //แก้ไขความไม่หยืดหยุ่นด้วย รับค่าที่โยนมา และ return เป็นค่าจริงเท็จแจ้งผลการทำงาน
         //คิดว่าน่าจะต้องมีอะไรเพิ่มความหยืดหยุ่นเจค แบบให้ไม่ยึดข้อมูลที่คีย์ผ่าน gui เผื่อกรณีต้องการปรับแต่งหน้า gui น่าจะลำบาก้ามามั่วแก้โค้ดในนี้
         //มีการดึงข้อมูลจาก gui มา //รอ gui
         //map.replace(numberRoom, type, price, status)
+
+        if (!map.containsKey(numberRoom)) {
+            return false;
+        } else 
+            map.put(numberRoom, new Room(numberRoom, type, price, status));
+        return true;
     }
 
     //เคลียร์ hash รีเซ็ตคลังข้อมูล

@@ -18,7 +18,7 @@ public class RoomService {
             bw = new BufferedWriter(fw);
 
             bw.write(numberRoom + "," + type + "," + price + "," + status ); // เขียนข้อมูลลงไปใน csv
-            bw.newLine();                                                       // ขึ้นบรรทัดใหม่ใน csv
+            bw.newLine();                                                    // ขึ้นบรรทัดใหม่ใน csv
         } catch (Exception e) {
             // อาจมีการขึ้นแจ้งเตือนถ้ามีความผิดพลาดแบบ pop up
             System.out.println(e);
