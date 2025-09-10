@@ -116,7 +116,7 @@ public class RoomRepository {
     //มีระบบเหมือนปิดโปรแกรมแล้วเรา hash ไปเป็น csv ตอนปรับหรือ update database น่าจะง่ายขึ้น
     //ตอนแรกจะเข้าด้วย Enumerating the elements of the dictionary แต่มัน error เลยเปลี่ยนใหม่
     public void saveToCSV(){
-        //กดปิดโปรแกรม จะเรียก method นี้
+        //กดปิดโปรแกรม จะเรียก method นี้  โหลดข้อมูลกลายเป็น CSV (ไว้ restore ตอนเปิดระบบใหม่)
         File fi = new File(".//File/Room.csv");
 
         /* 
