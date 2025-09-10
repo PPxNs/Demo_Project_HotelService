@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import StrategyPattern.PaymentStrategy;
+
 /*class no 3 */
 // กำหนดให้คลาสนี้เป็นเก็บ properties เป็น โมเดลเอาไว้ ให้ระบบอื่นเข้าถึงได้
 //เก็บข้อมูลลูกค้า
@@ -27,6 +29,30 @@ public class Customer {
         this.dateBooking = LocalDate.parse(booking, formatter);
         this.statusCustomer = statusCustomer;
     }
+
+    // ค่อยปรับวิธีการชำระเงินข้อลูกค้าในฐานของมูล CSV
+    // ในส่วนข้อฐานลูกค้า รูปแบบการชำระเงินน่าจะเข้ามาในนี้เพื่อจะได้สะดวกในการดึงฐานข้อมูลของลูกค้า
+    private PaymentStrategy paymentStrategy;
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy){
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    //อันนี้ให้ customerRepository บันทึกข้อมูลใน csv //ยังไม่จัดการ
+    public String getPayment(){
+        return paymentStrategy.getName();
+    }
+
+    //อันนี้มีให้ตัวของผู้ประกาศใช้งาน
+    public PaymentStrategy getPaymentStrategy(){
+        return paymentStrategy ;
+    }
+
+    /* 
+    public void processPayment(){
+        if (paymentStrategy != null  ) {
+             throw new IllegalStateException("No payment method set for customer: " + firstnameCustomer);
+        }
+    }*/
 
     public int getidCart(){
         return idCart;
@@ -54,6 +80,10 @@ public class Customer {
 
     public String getStatusCustomer(){
         return statusCustomer;
+    }
+
+    public String getFullName(){
+        return firstnameCustomer + " " + lastnameCustomer ;
     }
 
     //ใช้ดึงข้อมูลว่าจองก่อนเข้าพักจริงกี่วัน
