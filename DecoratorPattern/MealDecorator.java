@@ -1,0 +1,27 @@
+package DecoratorPattern;
+import FactoryMethodPattern.*;
+
+
+//มันยังมีความไม่ยืดหยุ่นในเรื่องของจำนวนคน และจำนวนวันที่จะรับบริการเราค่อยห่อซ้ำถ้า 2 วัน
+/**
+ *  Concrete Decorators: บริการมื้ออาหารบุฟเฟต์ 500 บาท / 1 ห้อง / วัน
+ */
+
+public class MealDecorator extends DepositDecorator {
+    
+    private int days;
+
+    public MealDecorator(DepositRoom wrappedDepositRoom, int days ) {
+        super(wrappedDepositRoom);
+        this.days = days ;
+    }
+
+    public double getPrice(){
+        return super.getPrice() + 500.0 * days ; 
+    }
+    public String getDescription(){
+        return super.getDescription() + " + Meal (" + days + " days)";
+    }
+    
+    
+}
