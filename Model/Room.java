@@ -7,10 +7,10 @@ package Model;
 
 // กำหนดให้คลาสนี้เป็นเก็บ properties เป็น โมเดลเอาไว้ ให้ระบบอื่นเข้าถึงได้
 public class Room {
-    private int numberRoom ; // เก็บข้อมูลหมายเลยห้อง
-    private String type;    //เก็บข้อมูลห้องเดี่ยว ห้องคู่ หรือห้องชุด
-    private double price; // เก็บข้อมูลว่าห้องราคาเท่าไหร่
-    private String status; // เก็บข้อมูลสถานะห้องว่าง  ไม่ว่าง หรือมีคนจองแล้ว
+    private final int numberRoom ; // เก็บข้อมูลหมายเลยห้อง
+    private final String type;    //เก็บข้อมูลห้องเดี่ยว ห้องคู่ หรือห้องชุด
+    private final double price; // เก็บข้อมูลว่าห้องราคาเท่าไหร่
+    private final String status; // เก็บข้อมูลสถานะห้องว่าง  ไม่ว่าง หรือมีคนจองแล้ว
 
     //Rep 
     // - numberRoom ต้องไม่เป็น null หรือ <= 0
@@ -44,5 +44,7 @@ public class Room {
     public String getStatus(){
         return status;
     }
+
+    
 
 }
