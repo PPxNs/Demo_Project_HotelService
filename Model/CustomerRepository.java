@@ -80,6 +80,7 @@ public class CustomerRepository {
                         + customer.getLastnameCustomer() + "," 
                         + customer.getDateCheckin()+ ","
                         + customer.getDateCheckout() + "," 
+                        + customer.getDateBooking()+ ","
                         + customer.getStatusCustomer());
                 bw.newLine(); 
                 }
@@ -114,6 +115,7 @@ public class CustomerRepository {
                         + customer.getLastnameCustomer() + "," 
                         + customer.getDateCheckin()+ ","
                         + customer.getDateCheckout() + "," 
+                        + customer.getDateBooking()+ ","
                         + customer.getStatusCustomer());
                 bw.newLine(); 
                 }
@@ -151,16 +153,17 @@ public class CustomerRepository {
             String s ;
             while ((s = br.readLine()) != null) {
                 String[] parts = s.split(","); //จะทำการสร้างสตริง เพื่อแบ่ง ข้อมูลตาม (,)
-                if (parts.length == 7) {
+                if (parts.length == 8) {
                     int numberRoom = Integer.parseInt(parts[0]);
                    int idCard = Integer.parseInt(parts[1]);
                    String firstname = parts[2] ; // ที่เป็นแบบนี้ได้เลยเพราะมันเป็นสตริงอยู่แล้ว
                    String lastname = parts[3];
                    String checkin = parts[4];
                    String checkout = parts[5];
-                   String status = parts[6];
+                   String booking = parts[6];
+                   String status = parts[7];
 
-                addCustomer(numberRoom,new Customer(idCard, firstname, lastname, checkin, checkout, status));
+                addCustomer(numberRoom,new Customer(idCard, firstname, lastname, checkin, checkout,booking, status));
             }
             }
         } catch (Exception e) {
