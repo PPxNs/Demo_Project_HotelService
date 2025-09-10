@@ -1,5 +1,7 @@
 package Model;
 
+import FactoryMethodPattern.DepositRoom;
+
 // class no. 1 ที่สร้าง
 /*คิดว่าจะมีการเก็บข้อมูลอีกอย่างหนึ่ง โดยการเขียนลงใน csv ผ่านการแอดข้อมูลผ่าน gui จากนั้นดึงข้อมูลเก็บลงในตัว dictionary จะได้ไม่ต้องลูป หาลดเวลาการเข้าถึงข้อมูล
  * จากนันสามารดึงข้อมูลจากไฟล์ส่วนกลาง (hash) มายังคลาสนี้กรณีจะดึงไปใช้ในคลาส service อื่น ๆ
@@ -11,6 +13,7 @@ public class Room {
     private final String type;    //เก็บข้อมูลห้องเดี่ยว ห้องคู่ หรือห้องชุด
     private final double price; // เก็บข้อมูลว่าห้องราคาเท่าไหร่
     private final String status; // เก็บข้อมูลสถานะห้องว่าง  ไม่ว่าง หรือมีคนจองแล้ว
+    private DepositRoom depositRoom;
 
     //Rep 
     // - numberRoom ต้องไม่เป็น null หรือ <= 0
@@ -44,6 +47,17 @@ public class Room {
     public String getStatus(){
         return status;
     }
+
+
+    public void setDepositRoom(DepositRoom depositRoom) {
+        this.depositRoom = depositRoom;
+    }
+
+    public DepositRoom getDepositRoom() {
+        return depositRoom;
+    }
+
+    
 
     
 

@@ -11,6 +11,11 @@ public class CustomerRepository {
     HashMap<Integer, List<Customer>> mapCustomer = new HashMap<>();
     
 
+    // ให้ดึง hash มาอ่านได้
+    public List<Customer> getCustomersInRoom(int numberRoom) {
+        return mapCustomer.getOrDefault(numberRoom, new ArrayList<>());
+    }
+
     //เพิ่มลูกค้าเข้าห้อง กำลังคิดว่า ถ้าทำเป็น dictionary แบบ linklist น่าจะดีกว่า เพราะมันต้องมีคนใช้ห้องเดียวกัน หลายคนได้
     public boolean addCustomer(int numberRoom, Customer customer){
 
