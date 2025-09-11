@@ -12,11 +12,13 @@ public class InsuranceDecorator extends DepositDecorator {
         
     }
 
-    public double getPrice(){
-        return super.getPrice() + 1000.0; 
-    }
     public String getDescription(){
-        return super.getDescription() + " + Insurance";
+        return super.getDescription() + "\n + Insurance      --> 1000.0";
+    }
+
+    @Override
+    public double getCost() {
+        return super.getPrice() + 1000.0; 
     }
     
 }

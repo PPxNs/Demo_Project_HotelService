@@ -6,6 +6,6 @@ public interface DepositRoom{
     //ราคาของประเภทแต่ละห้อง
     // แต่บังเอิญว่าตัวของ Room มีราคา ควรจัดการโครงสร้างนี้ไงดีนะ
 
-    public double getPrice();
+    public double getCost();
     public String getDescription();
 }

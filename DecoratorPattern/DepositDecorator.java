@@ -13,7 +13,7 @@ public abstract class DepositDecorator implements DepositRoom{
     }
 
     public double getPrice(){
-        return wrappedDepositRoom.getPrice();
+        return wrappedDepositRoom.getCost();
     }
 
     public String getDescription(){

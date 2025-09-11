@@ -11,12 +11,13 @@ public class PickupServiceDecorator extends DepositDecorator{
     public PickupServiceDecorator(DepositRoom wrappedDepositRoom) {
         super(wrappedDepositRoom);
     }
-    public double getPrice(){
-        return super.getPrice() + 300.0; 
-    }
-
+   
     public String getDescription(){
-        return super.getDescription() + " + Pickup Service";
+        return super.getDescription() + "\n + Pickup Service --> 300.0" ;
+    }
+    @Override
+    public double getCost() {
+         return super.getPrice() + 300.0;
     }
     
 }
