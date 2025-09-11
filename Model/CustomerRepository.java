@@ -33,7 +33,7 @@ public class CustomerRepository {
     */
 
     //ลบข้อมูลลูกค้าตามรหัสบัตร
-    public boolean removeCustomer(int numberRoom, long idCart){
+    public boolean removeCustomer(int numberRoom, String idCart){
         if (mapCustomer.containsKey(numberRoom)) {
             /* อธิบาย : ดึงข้อมูล key ลบถ้า mapCustomer.getidCart() ตรงกับ idCart ที่ return เพราะมันเปรียบเทียบ ให้ค่า true พร้อมลบข้อมูลได้*/
             return mapCustomer.get(numberRoom).removeIf(c-> c.getidCart() == idCart);
@@ -44,7 +44,7 @@ public class CustomerRepository {
 
     //คิดว่าตรงหน้า gui เมื่อจะเข้าไปแก้ไขข้อมูลลูกค้าน่าจะมีการแสดงข้อมูลอยู่แล้วถ้าลูกค้าจะแก้ตรงไหนก็ส่งค่ามาบันทึกใหม่
     //แก้ไขข้อมูลลูกค้า
-    public boolean replaceCustomer(int numberRoom,long idCart,Customer newCustomer){
+    public boolean replaceCustomer(int numberRoom,String idCart,Customer newCustomer){
         if (mapCustomer.containsKey(numberRoom)) {
             List<Customer> customers = mapCustomer.get(numberRoom);
             for(int i = 0 ; i < customers.size(); i++){
@@ -160,7 +160,7 @@ public class CustomerRepository {
                 String[] parts = s.split(","); //จะทำการสร้างสตริง เพื่อแบ่ง ข้อมูลตาม (,)
                 if (parts.length == 8) {
                     int numberRoom = Integer.parseInt(parts[0]);
-                   long idCard = Long.parseLong(parts[1]);
+                   String idCard = parts[1];
                    String firstname = parts[2] ; // ที่เป็นแบบนี้ได้เลยเพราะมันเป็นสตริงอยู่แล้ว
                    String lastname = parts[3];
                    String checkin = parts[4];
