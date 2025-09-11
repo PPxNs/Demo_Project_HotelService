@@ -9,9 +9,11 @@ import Model.Room;
 
 public class DefaultDiscount implements DiscountStrategy{
     
+    
+
     @Override
-    public double applyDiscount(Room room, Customer customer) {
-        return room.getPrice();
+    public double applyDiscount(Room room, Customer customer, double totalPrice) {
+       return totalPrice;
     }
     
 }

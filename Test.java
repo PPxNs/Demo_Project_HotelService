@@ -7,7 +7,6 @@ import ObserverPattern.*;
 public class Test {
 
     // ยังมีความไม่สมเหตุสมผลการเชื่อมของห้องและลูกต้า //ขอคิดวิธี
-    // ส่วนห่อหุ้มยังไม่ได้ทำ
     public static void main(String[] args) {
         System.out.println("--- Hotel System Simulation ---");
 
@@ -25,15 +24,17 @@ public class Test {
 
         // --- 2. สร้างลูกค้า ---
         Customer customer1 = new Customer(
-            123456789, "John", "Doe",
-            "2025-09-11", "2025-09-12", "2025-09-10",
+            "1234567891233", "John", "Doe",
+            "2025-09-11", "2025-09-12", "2025-08-10",
             "Confirmed"
         );
         customer1.setPaymentStrategy(new CreditCardPayment("4569873"));
 
+        //ตอนแรกว่าจะให้เป็น Long แต่ String น่าจะดีกว่า
+        //L บอกว่านี่ long no int 
         Customer customer2 = new Customer(
-            987654321, "Jane", "Smith",
-            "2025-09-11", "2025-09-12", "2025-09-10",
+             "987654321156", "Jane", "Smith",
+            "2025-09-11", "2025-09-12", "2025-08-10",
             "Confirmed"
         );
         
