@@ -1,4 +1,7 @@
 package DecoratorPattern;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import FactoryMethodPattern.*;
 
 /**
@@ -13,12 +16,12 @@ public class InsuranceDecorator extends DepositDecorator {
     }
 
     public String getDescription(){
-        return super.getDescription() + "\n + Insurance      --> 1000.0";
+        return super.getDescription() + "\n + Insurance                 --> 1000.00";
     }
 
     @Override
     public double getCost() {
-        return super.getPrice() + 1000.0; 
+        return new BigDecimal(super.getPrice() + 1000.0).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
     
 }

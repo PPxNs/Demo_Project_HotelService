@@ -19,12 +19,13 @@ public class MealDecorator extends DepositDecorator {
     }
 
     public String getDescription(){
-        return super.getDescription() + "\n + Meal (" + days + " days)  --> " + 500.0* days;
+        return super.getDescription() + "\n + Meal (" + days + " days)             --> " + 500.0*days +"0" ; //พอดีอยากได้ทศนิยม 2 ตำแหน่ง
+
     }
 
     @Override
     public double getCost() {
-       return super.getPrice() + 500.0 * days ;  
+       return super.getPrice() + 500.00 * days ;  
     }
     
     
