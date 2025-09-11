@@ -1,5 +1,5 @@
-import FactoryMethodPattern.DoubleroomType;
-import FactoryMethodPattern.SuiteType;
+import DecoratorPattern.*;
+import FactoryMethodPattern.*;
 import Model.*;
 import StrategyPattern.*;
 import ObserverPattern.*;
@@ -20,6 +20,8 @@ public class Test {
 
         RoomRepository roomRepo = new RoomRepository();
         CustomerRepository customerRepo = new CustomerRepository();
+        DepositFactory depositFactory = new DepositFactory();
+        
 
         // --- 2. สร้างลูกค้า ---
         Customer customer1 = new Customer(
@@ -34,6 +36,21 @@ public class Test {
             "2025-09-11", "2025-09-12", "2025-09-10",
             "Confirmed"
         );
+        
+        //สร้างโรงงานก่อนห่อ เป็นตัวของประเภทห้อง
+        DepositRoom depositType = depositFactory.createSimpDepositRoom(K1);
+            
+        // "ห่อ" ทับด้วยบริการประกันของสูญหาย
+        depositType = new InsuranceDecorator(depositType);
+
+        // "ห่อ" ด้วยบริการมื้ออาหาร
+        depositType = new MealDecorator(depositType, 1);
+
+        // "ห่อ" ด้วยบริการรับส่ง
+        depositType = new PickupServiceDecorator(depositType);
+        K1.setDepositRoom(depositType);
+        
+
         customer2.setPaymentStrategy(new PromptpayPayment());
 
         // --- 3. เก็บห้องและลูกค้า ---

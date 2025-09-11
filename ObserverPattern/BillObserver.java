@@ -1,11 +1,7 @@
 package ObserverPattern;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import Model.Customer;
-import Model.CustomerRepository;
-import Model.Room;
+import Model.*;
 
 public class BillObserver implements RoomObserver{
     
@@ -67,20 +63,30 @@ public class BillObserver implements RoomObserver{
         System.out.println("----------------------");
 
 
-        System.out.println("Room Price: " + room.getPrice()); // อยากให้แสดงราคาห้องที่ยังไม่มีการบวกมัดจำ
+        System.out.println("Room Price: " + room.getPrice()); // อยากให้แสดงราคาห้องที่ยังไม่มีการบวกมัดจำ //ผ่าน
 
 
-        if (room.getDepositRoom() != null) {
-            // เราจะทำยังไงที่จะดึงข้อมูลหลังห่อ แสดงราคาของมัดจำ + service
-            System.out.println("Room & Services: " + room.getDepositRoom().getDescription());
-            System.out.printf("Total Price: %.2f\n", room.getDepositRoom().getPrice()); 
-        } else {
-            
-            //แสดงราคารวมทั้งหมด
-            System.out.printf("Total Price: %.2f\n", room.getPrice());
-        }
+        // เราจะทำยังไงที่จะดึงข้อมูลหลังห่อ แสดงราคาของมัดจำ + service 
+        //อยากจะเพิ่มเติมส่วนของ ราคาเฉพาะอย่าง
+
+        System.out.println("Deposit & Services Add-on: " );
+        System.out.println(" " +room.getDepositRoom().getDescription()); //ไม่ผ่าน
+        System.out.println("Deposit & Services Add-on Price: " + room.getDepositRoom().getCost());
+        //บริการเสริมน่าจะตรวจสอบได้ว่ามีการห่อมั้ย ถ้าไม่มี จะให้เขียนว่า 0.0
+        // if ผิดอยู่
         
+        
+        /* 
+        if (room.getDepositRoom().getDescription().equalsIgnoreCase("") ||
+            room.getDepositRoom().getDescription().equalsIgnoreCase("") ||
+            room.getDepositRoom().getDescription().equalsIgnoreCase("")) {    
 
+            System.out.println("Services Add-on: " + room.getDepositRoom().DepositDecorator().getCost()); //ไม่ผ่าน
+        } else System.out.println("Services Add-on: 0.0 ");*/
+
+
+
+        System.out.printf("Total Price: %.2f\n", room.getPrice() + room.getDepositRoom().getCost());  // ไม่ผ่าน
         System.out.println("Payment Method: " + customer.getPaymentStrategy().getName());
         System.out.println("======================\n");
 
