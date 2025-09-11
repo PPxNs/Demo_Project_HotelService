@@ -70,11 +70,16 @@ public class BillObserver implements RoomObserver{
         System.out.println("Room Price: " + room.getPrice()); // อยากให้แสดงราคาห้องที่ยังไม่มีการบวกมัดจำ
 
 
-        // เราจะทำยังไงที่จะดึงข้อมูลหลังห่อ แสดงราคาของมัดจำ + service
-        System.out.println("Room & Services: " + room.getDepositRoom().getDescription());
-
-        //แสดงราคารวมทั้งหมด
-        System.out.printf("Total Price: %.2f\n", room.getPrice());
+        if (room.getDepositRoom() != null) {
+            // เราจะทำยังไงที่จะดึงข้อมูลหลังห่อ แสดงราคาของมัดจำ + service
+            System.out.println("Room & Services: " + room.getDepositRoom().getDescription());
+            System.out.printf("Total Price: %.2f\n", room.getDepositRoom().getPrice()); 
+        } else {
+            
+            //แสดงราคารวมทั้งหมด
+            System.out.printf("Total Price: %.2f\n", room.getPrice());
+        }
+        
 
         System.out.println("Payment Method: " + customer.getPaymentStrategy().getName());
         System.out.println("======================\n");
